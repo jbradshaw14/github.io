@@ -1,103 +1,190 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Process Journal Pro</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Process Journal Pro — Lightweight PLC Data Logging</title>
+  <meta name="description" content="Process Journal Pro is a lightweight, affordable data logger for PLCs—perfect for small OEMs, rural utilities, and machine-level logging." />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="icon" type="image/png" href="favicon.png" sizes="32x32" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Process Journal Pro" />
+  <meta property="og:description" content="A lightweight data-logging alternative to traditional plant historians." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="logo-placeholder.svg" />
+
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f9fafc;
-      color: #222;
+    :root {
+      --bg: #0b1220;
+      --surface: #111a2e;
+      --surface-2: #0e172a;
+      --text: #e6eefc;
+      --muted: #a9b7d9;
+      --accent: #3cc4ff;
+      --accent-2: #38efb5;
+      --ring: rgba(60,196,255,0.35);
+      --maxw: 1100px;
+      --radius: 14px;
+      --shadow: 0 10px 30px rgba(0,0,0,0.25);
     }
-    header {
-      background: linear-gradient(135deg, #0077cc, #00aabb);
-      color: white;
-      text-align: center;
-      padding: 3rem 1rem;
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); font-family: Inter, system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif; }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container { max-width: var(--maxw); margin: 0 auto; padding: 24px; }
+
+    /* Header */
+    .nav {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px; padding: 8px 0 12px;
     }
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
+    .brand {
+      display: flex; align-items: center; gap: 12px;
     }
-    header p {
-      font-size: 1.2rem;
-      margin-top: 0.5rem;
+    .brand img {
+      height: 36px; width: auto; display: block; border-radius: 8px;
     }
+    .brand .name { font-weight: 700; letter-spacing: 0.2px; }
+    .nav-links { display: flex; align-items: center; gap: 16px; color: var(--muted); }
+    .nav .cta {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #051019; padding: 10px 16px; border-radius: 10px; font-weight: 600; border: none;
+      box-shadow: var(--shadow);
+    }
+    .nav .cta:hover { filter: brightness(1.05); text-decoration: none; }
+
+    /* Hero */
+    .hero {
+      margin-top: 28px; padding: 32px; border-radius: var(--radius);
+      background: radial-gradient(1200px 500px at 20% -20%, rgba(60,196,255,0.15), transparent 60%), 
+                  radial-gradient(1000px 600px at 100% 0%, rgba(56,239,181,0.12), transparent 60%),
+                  linear-gradient(180deg, var(--surface), var(--surface-2));
+      box-shadow: var(--shadow);
+    }
+    .eyebrow { color: var(--muted); font-size: 0.95rem; letter-spacing: 0.35px; }
+    .hero h1 {
+      margin: 10px 0 12px; line-height: 1.1; font-size: clamp(2rem, 3.2vw + 1rem, 3.2rem);
+    }
+    .hero p { color: var(--muted); font-size: 1.05rem; max-width: 60ch; }
+    .hero-actions { margin-top: 18px; display: flex; gap: 12px; flex-wrap: wrap; }
     .btn {
-      display: inline-block;
-      background: white;
-      color: #0077cc;
-      padding: 0.8rem 1.5rem;
-      margin-top: 1rem;
-      text-decoration: none;
-      border-radius: 6px;
-      font-weight: bold;
+      display: inline-block; padding: 12px 18px; border-radius: 12px; font-weight: 600; border: 1px solid transparent;
     }
-    section {
-      max-width: 1100px;
-      margin: 2rem auto;
-      padding: 0 1rem;
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #051019; box-shadow: var(--shadow);
     }
-    .card-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5rem;
-      margin-top: 2rem;
+    .btn-ghost {
+      border-color: rgba(255,255,255,0.12); color: var(--text); background: transparent;
+    }
+    .btn:hover { text-decoration: none; transform: translateY(-1px); }
+
+    /* 3 Big Cards */
+    .cards {
+      display: grid; grid-template-columns: 1fr; gap: 18px; margin-top: 26px;
+    }
+    @media (min-width: 860px) {
+      .cards { grid-template-columns: repeat(3, 1fr); }
     }
     .card {
-      background: white;
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      text-align: center;
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--radius); padding: 22px; box-shadow: var(--shadow);
     }
-    .card h3 {
-      margin-top: 0;
-      color: #0077cc;
+    .card h3 { margin: 8px 0 6px; }
+    .card p { color: var(--muted); }
+
+    /* CTA band */
+    .cta-band {
+      margin-top: 28px; padding: 20px; border-radius: var(--radius);
+      background: linear-gradient(135deg, rgba(60,196,255,0.12), rgba(56,239,181,0.12));
+      border: 1px solid rgba(255,255,255,0.08);
+      display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
     }
-    footer {
-      background: #222;
-      color: #ccc;
-      text-align: center;
-      padding: 1rem;
-      margin-top: 3rem;
-    }
+    .cta-band .copy { color: var(--muted); }
+    .cta-band .actions { display: flex; gap: 10px; }
+
+    /* Footer */
+    footer { margin-top: 28px; padding: 16px 0 50px; color: var(--muted); font-size: 0.95rem; }
+    .footer-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+    .footer-links { display: flex; gap: 14px; }
+    .footer-links a { color: var(--muted); }
+    .fine { opacity: 0.85; }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Process Journal Pro</h1>
-    <p>Lightweight, reliable PLC data logging</p>
-    <a href="#" class="btn">Download Now</a>
+  <header class="container nav" role="banner">
+    <div class="brand">
+      <!-- Replace this file with your real logo when ready -->
+      <img src="logo-placeholder.svg" alt="Process Journal Pro logo" />
+      <div class="name">Process Journal Pro</div>
+    </div>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a class="cta" href="#download">Download</a>
+    </nav>
   </header>
 
-  <section>
-    <h2 style="text-align:center;">Why Choose Process Journal Pro?</h2>
-    <div class="card-container">
-      <div class="card">
-        <h3>Simple to setup, easy to use</h3>
-        <p>Process Journal Pro is a simple Windows app for capturing S7 process values right at the machine. Export clean Excel workbooks automatically.
-        Programmer and operator friendly, configure once and run forever. Start and stop automatically via the PLC with our "Auto Log" feature.</p>
+  <main class="container">
+    <section class="hero" id="top">
+      <div class="eyebrow">Lightweight PLC Data Logging</div>
+      <h1>Affordable, machine-level logging for OEMs, rural utilities, and field engineers.</h1>
+      <p>
+        Process Journal Pro gives you historian-style logs without the historian-style price.
+        Capture arrays from S7 PLCs, auto-recover on crash, and export clean Excel files — fast.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" id="download" href="#">Download (Windows)</a>
+        <a class="btn btn-ghost" href="#features">See features</a>
       </div>
-      <div class="card">
-        <h3>Reliable Data Logging</h3>
-        <p>Crash-resilient with automatic journal recovery, ensuring your data is safe even if the PC or PLC disconnects unexpectedly.</p>
+
+      <!-- 3 Big Cards -->
+      <div class="cards" id="features" aria-label="Key features">
+        <article class="card">
+          <h3>Simple & Focused</h3>
+          <p>Point at your S7 DB array (REAL/INT/DINT), pick a period, and hit Start. Perfect for machine-level or trial runs.</p>
+        </article>
+        <article class="card">
+          <h3>Crash-Resilient</h3>
+          <p>Writes a journal as it logs. If Windows or power fails, recover to Excel next launch — no data drama.</p>
+        </article>
+        <article class="card">
+          <h3>Excel-Ready Output</h3>
+          <p>Auto-converts journals to tidy .xlsx files with headers and timestamps. Append to an existing workbook, too.</p>
+        </article>
       </div>
-      <div class="card">
-        <h3>Affordable Alternative</h3>
-        <p>Skip expensive licenses. Get historian-like logging at a fraction of the cost — ideal solution for OEMs, R&D, Machine Builders, and small utilities. </p>
+    </section>
+
+    <section class="cta-band" id="pricing" aria-label="Call to action">
+      <div class="copy">Start free. Keep it simple. Upgrade when you’re ready.</div>
+      <div class="actions">
+        <a class="btn btn-primary" href="#download">Download</a>
+        <a class="btn btn-ghost" href="privacy.html">Privacy</a>
+        <a class="btn btn-ghost" href="terms.html">Terms</a>
       </div>
-      <div class="card">
-        <h3>Step-by-Step setup guide</h3>
-        <p>Configure and start using in minutes with our TIA tutorial. Questions? Contact us for technical support.</p>
+    </section>
+  </main>
+
+  <footer class="container" role="contentinfo">
+    <div class="footer-row">
+      <div class="fine">© <span id="y"></span> Process Journal Pro. All rights reserved.</div>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
       </div>
     </div>
-  </section>
-
-  <footer>
-    <p>&copy; 2025 ClearStream Automation. All rights reserved.</p>
   </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
