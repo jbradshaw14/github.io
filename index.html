@@ -115,4 +115,103 @@
     .card h3 { margin: 8px 0 6px; }
     .card p { color: var(--muted); }
 
-    /* CTA ban*
+    /* CTA band */
+    .cta-band {
+      margin-top: 28px; padding: 20px; border-radius: var(--radius);
+      background: linear-gradient(135deg, rgba(31,111,235,0.08), rgba(47,191,113,0.08));
+      border: 1px solid var(--line);
+      display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+    }
+    .cta-band .copy { color: var(--muted); }
+    .cta-band .actions { display: flex; gap: 10px; }
+
+    /* Footer */
+    footer { margin-top: 28px; padding: 16px 0 50px; color: var(--muted); font-size: 0.95rem; }
+    .footer-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+    .footer-links { display: flex; gap: 14px; }
+    .footer-links a { color: var(--muted); }
+    .fine { opacity: 0.85; }
+  </style>
+</head>
+<body>
+  <header class="container nav" role="banner">
+    <div class="brand">
+      <img src="logo-placeholder.svg" alt="Process Journal Pro logo" />
+      <div class="name">Process Journal Pro</div>
+    </div>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <!-- Replaced Download with Contact speech-bubble -->
+      <a class="contact-bubble" href="#contact" aria-label="Contact">Contact</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero" id="top">
+      <div class="eyebrow">Industrial PLC Data Logging</div>
+      <h1>Lightweight, reliable logging for OEMs, utilities, and field engineers.</h1>
+      <p>
+        Configure in minutes, capture arrays from S7 PLCs, and export clean Excel files. Built for uptime with crash-resilient journaling.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#guide">Step-by-step Guide</a>
+        <a class="btn" href="#contact">Contact</a>
+      </div>
+
+      <!-- Key Points (now 4 cards) -->
+      <div class="cards" id="features" aria-label="Key features">
+        <article class="card">
+          <h3>Lightweight & Easy</h3>
+          <p>Install, point to your S7 DB array (REAL/INT/DINT), pick a period, and go.</p>
+        </article>
+        <article class="card">
+          <h3>Reliable & Crash-Resilient</h3>
+          <p>Journaled writes with automatic recovery—no lost runs, even after power events.</p>
+        </article>
+        <article class="card">
+          <h3>Affordable</h3>
+          <p>Industrial logging without the plant-historian price tag.</p>
+        </article>
+        <article class="card" id="guide">
+          <h3>Step-by-Step Guide</h3>
+          <p>Follow a concise setup walkthrough from first launch to Excel export.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="cta-band" id="pricing" aria-label="Get in touch">
+      <div class="copy">Ready to deploy or need pricing details?</div>
+      <div class="actions">
+        <a class="btn btn-primary" href="#contact">Contact</a>
+        <a class="btn" href="#guide">See the Guide</a>
+        <a class="btn" href="privacy.html">Privacy</a>
+        <a class="btn" href="terms.html">Terms</a>
+      </div>
+    </section>
+
+    <section class="container" id="contact" aria-label="Contact">
+      <div class="card" style="margin-top:22px;">
+        <h3>Contact</h3>
+        <p class="fine">Have questions or want a quote? Reach out and we’ll get back promptly.</p>
+        <!-- TODO: replace with your real email or contact form -->
+        <p><a class="btn" href="mailto:info@yourdomain.com?subject=Process%20Journal%20Pro%20Inquiry">Email us</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container" role="contentinfo">
+    <div class="footer-row">
+      <div class="fine">© <span id="y"></span> Process Journal Pro. All rights reserved.</div>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
