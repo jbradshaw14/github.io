@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Terms of Use — Process Journal Pro</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <style>
+    body { font-family: Inter, system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif; margin: 0; color: #0b1220; }
+    .wrap { max-width: 860px; margin: 0 auto; padding: 32px 20px 48px; }
+    a { color: #0b68ff; text-decoration: none; } a:hover { text-decoration: underline; }
+    h1 { margin-top: 0; }
+    header { padding: 14px 20px; border-bottom: 1px solid #e6e8ee; background: #fff; }
+    header .row { max-width: 860px; margin: 0 auto; display: flex; align-items: center; gap: 12px; }
+    header img { height: 28px; }
+    footer { padding: 24px 20px; border-top: 1px solid #e6e8ee; color: #5b6475; }
+    .small { color: #5b6475; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="row">
+      <a href="index.html"><img src="logo-placeholder.svg" alt="Process Journal Pro" /></a>
+      <strong>Process Journal Pro</strong>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <h1>Terms of Use</h1>
+    <p class="small">Last updated: <span id="d"></span></p>
+
+    <p>This page is a simple terms stub. Replace with your actual legal terms before launch.</p>
+
+    <h2>License</h2>
+    <p>You are granted a non-exclusive, non-transferable license to use the software, subject to payment and compliance with these terms.</p>
+
+    <h2>Restrictions</h2>
+    <ul>
+      <li>No reverse engineering, distribution of the installer, or resale without written permission.</li>
+      <li>Use at your own risk in industrial environments; ensure backups and proper change control.</li>
+    </ul>
+
+    <h2>Limitation of Liability</h2>
+    <p>To the fullest extent permitted by law, the software is provided “as is” without warranties of any kind.</p>
+
+    <h2>Contact</h2>
+    <p>For questions, email <a href="mailto:support@example.com">support@example.com</a>.</p>
+
+    <p><a href="index.html">← Back to site</a></p>
+  </main>
+
+  <footer>
+    <div class="wrap">&copy; <span id="y"></span> Process Journal Pro</div>
+  </footer>
+
+  <script>
+    const now = new Date();
+    document.getElementById('y').textContent = now.getFullYear();
+    document.getElementById('d').textContent = now.toLocaleDateString();
+  </script>
+</body>
+</html>
