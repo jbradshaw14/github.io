@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Process Journal Pro — Lightweight PLC Data Logging for S7</title>
+  <meta name="description" content="A simple, affordable PLC data logger for S7. Log process values to Excel without the heavy, expensive historian." />
+  <!-- Replace with your real domain once live -->
+  <link rel="canonical" href="https://processjournalpro.com/">
+
+  <!-- Social/OG -->
+  <meta property="og:title" content="Process Journal Pro" />
+  <meta property="og:description" content="A simple, affordable PLC data logger for S7. Log process values to Excel without the heavy historian." />
+  <meta property="og:url" content="https://processjournalpro.com/" />
+  <meta property="og:type" content="website" />
+
+  <style>
+    :root{
+      --bg:#0b1220;           /* dark navy */
+      --panel:#121a2b;        /* slightly lighter panel */
+      --ink:#e8eefc;          /* light text */
+      --muted:#9fb2d9;
+      --accent:#16a34a;       /* green */
+      --accent-2:#3b82f6;     /* blue */
+      --ring:rgba(59,130,246,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
+      color:var(--ink);
+      background: radial-gradient(1200px 600px at 10% -10%, rgba(59,130,246,.25), transparent 60%),
+                  radial-gradient(1000px 500px at 90% -20%, rgba(22,163,74,.25), transparent 60%),
+                  var(--bg);
+    }
+    a{color:var(--accent-2); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:1100px; margin:0 auto; padding:24px}
+    header{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:12px 0}
+    .brand{display:flex; align-items:center; gap:12px}
+    .logo{
+      width:36px; height:36px; border-radius:8px;
+      background: linear-gradient(135deg, var(--accent-2), var(--accent));
+      display:grid; place-items:center; font-weight:700; color:white;
+      box-shadow: 0 8px 24px rgba(0,0,0,.25);
+    }
+    nav a{margin-left:16px; color:var(--muted)}
+    nav a:hover{color:var(--ink)}
+    .hero{
+      display:grid; gap:18px; padding:56px 0 32px 0;
+    }
+    .kicker{color:var(--accent-2); font-weight:700; letter-spacing:.04em; text-transform:uppercase; font-size:.85rem}
+    h1{margin:0; font-size:clamp(2rem, 3.5vw + 1rem, 3rem); line-height:1.15}
+    .sub{color:var(--muted); max-width:760px}
+    .cta{display:flex; flex-wrap:wrap; gap:12px; margin-top:6px}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:12px 18px; border-radius:12px; font-weight:700; border:1px solid transparent;
+      background:var(--accent); color:white; box-shadow:0 10px 30px rgba(22,163,74,.25);
+    }
+    .btn:hover{filter:brightness(1.05)}
+    .btn.secondary{
+      background:transparent; color:var(--ink); border-color:#2a3a5a;
+      box-shadow:none;
+    }
+    .grid{display:grid; gap:14px}
+    @media (min-width:900px){ .grid.cols-3{grid-template-columns:repeat(3,1fr)} }
+    .card{
+      background:var(--panel); border:1px solid #203055; border-radius:14px; padding:18px;
+    }
+    .card h3{margin:0 0 6px 0; font-size:1.05rem}
+    .foot{margin-top:36px; padding:18px 0; color:var(--muted); font-size:.9rem; border-top:1px solid #203055}
+    .list{margin:0; padding-left:18px}
+    .badge{
+      display:inline-block; font-size:.8rem; padding:3px 8px; border-radius:999px;
+      background:#173056; color:#cfe0ff; border:1px solid #2a4a80;
+    }
+    .note{color:var(--muted); font-size:.95rem}
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 12px; border-radius:999px; background:#0e1a31; border:1px solid #203055; color:#cfe0ff;
+    }
+    .pill .dot{width:8px; height:8px; border-radius:50%; background:var(--accent)}
+    .hr{height:1px; background:#203055; margin:20px 0}
+    .callout{background:linear-gradient(180deg,#0d1b34, #0b162a); border:1px solid #203055; padding:16px; border-radius:14px}
+    .kbd{font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background:#0c1730; border:1px solid #23345a; padding:1px 6px; border-radius:6px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">PJ</div>
+        <strong>Process Journal Pro</strong>
+      </div>
+      <nav>
+        <a href="#features">Features</a>
+        <a href="#who">Who it's for</a>
+        <a href="#how">How it works</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <span class="kicker">Lightweight PLC Data Logging</span>
+      <h1>Log S7 PLC data to Excel — without the heavy historian.</h1>
+      <p class="sub">
+        Process Journal Pro is a simple Windows app for capturing S7 process values right at the machine.
+        Point it at a non-optimized DB, choose the period, and export clean Excel workbooks automatically.
+        Crash-resilient, operator-friendly, and priced for small teams.
+      </p>
+      <div class="cta">
+        <!-- Replace YOUR_GITHUB_USERNAME and REPO if you publish binaries via Releases -->
+        <a class="btn" href="https://github.com/YOUR_GITHUB_USERNAME/YOUR_REPO/releases/latest">Download for Windows</a>
+        <a class="btn secondary" href="#features">See features</a>
+      </div>
+      <div class="pill"><span class="dot"></span> S7 (S7-1200/1500) support today · Excel output · Labels & preview</div>
+    </section>
+
+    <section id="features" class="grid cols-3">
+      <div class="card">
+        <h3>Connect fast</h3>
+        <p>IP, rack, slot, DB, start, count, and type (REAL/INT/DINT). No server to maintain.</p>
+      </div>
+      <div class="card">
+        <h3>Excel-ready logs</h3>
+        <p>Writes directly to <strong>.xlsx</strong>. Append new runs as separate sheets or create new files per session.</p>
+      </div>
+      <div class="card">
+        <h3>Crash-resilient</h3>
+        <p>Streams to a small journal file while running and auto-recovers to Excel on restart.</p>
+      </div>
+      <div class="card">
+        <h3>Operator labels</h3>
+        <p>Name channels inline (CSV) and preview the last values in a live table.</p>
+      </div>
+      <div class="card">
+        <h3>Simple by design</h3>
+        <p>No databases, no servers, no licensing dongles. A single, focused tool.</p>
+      </div>
+      <div class="card">
+        <h3>Friendly pricing</h3>
+        <p>Perfect for OEMs, small utilities, and consultants who don’t need a full plant historian.</p>
+      </div>
+    </section>
+
+    <div class="hr"></div>
+
+    <section id="who" class="grid cols-3">
+      <div class="card">
+        <h3>OEMs & Machine Builders</h3>
+        <ul class="list">
+          <li>Bundle with machines for acceptance testing</li>
+          <li>Field diagnostics & FAT/SAT logging</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Rural Water & Small Utilities</h3>
+        <ul class="list">
+          <li>Trend key setpoints & flows</li>
+          <li>Keep data locally, in Excel</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Consultants & Integrators</h3>
+        <ul class="list">
+          <li>Quick study runs without SCADA</li>
+          <li>Deliver clean CSV/Excel to clients</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="how" class="callout" style="margin-top:18px">
+      <h3 style="margin:0 0 8px 0">How it works</h3>
+      <ol class="list">
+        <li>Create a non-optimized DB with your values (array of REAL/INT/DINT).</li>
+        <li>Enter PLC connection + offsets.</li>
+        <li>Pick a save folder. Press <span class="kbd">Start</span>.</li>
+        <li>Stop to finalize an Excel workbook (or auto-recover if power is lost).</li>
+      </ol>
+      <p class="note">Process Journal Pro reads with <em>snap7</em> and writes with <em>openpyxl</em>. It does not modify your PLC program.</p>
+    </section>
+
+    <section id="contact" style="margin-top:18px">
+      <p class="note">Questions or feedback? Email <a href="mailto:hello@processjournalpro.com">hello@processjournalpro.com</a>.</p>
+    </section>
+
+    <footer class="foot">
+      <span>© <span id="y"></span> Process Journal Pro. All rights reserved.</span>
+      <span style="float:right"><span class="badge">S7 support</span> · Future: more PLCs</span>
+    </footer>
+  </div>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>
